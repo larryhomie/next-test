@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: #f9f9f9;
+	font-size: 80%;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.clearfix:after {
+	content: "";
+	height: 1px;
+	display: block;
+	visibility: hidden;
+	clear: both;
+}
+
+.header {
+	padding: 15px;
+	background: #111;
+	border-bottom: 1px solid #000;
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	font: 130% "Century Gothic";
+}
+
+.header h3 {
+	float: left;
+}
+
+.header ul {
+	float: right;
+	margin-top: 5px;
+}
+
+.header ul li {
+	float: left;
+	margin-left: 20px;
+}
+
+.header li a {
+	color: inherit;
+}
+
+.header .main {
+	margin: 0 auto;
+}
+
+.main {
+	width: 80%;
+	margin: 50px auto 0;
+}
+
+table {
+	width: 100%;
+	margin: 40px 0 0;
+	border-collapse: collapse;
+}
+
+td {
+	padding: 7px;
+	padding-left: 0;
+}
+
+th {
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.logger, .signer {
+	border: 1px solid #000;
+	padding: 50px;
+	width: 400px;
+	display: none;
+	background: #fff;
+}

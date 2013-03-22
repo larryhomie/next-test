@@ -1,0 +1,28 @@
+
+
+  <h2>Listing tvs</h2>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Story</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @tvs.each do |tv| %>
+    <tr>
+      <td><%= tv.title %></td>
+      <td><%= tv.story %></td>
+      <td><%= link_to 'Show', tv %></td>
+      <td><%= link_to 'Edit', edit_tv_path(tv) %></td>
+      <td><%= link_to 'Destroy', tv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New Tv', new_tv_path %>
+
