@@ -17,34 +17,67 @@
 
 $(document).ready(function () {
 
-	$('.logd').click(function () {
-		$('.logger').modal();
+	//Login Forms modal
+	
+	$('.loginSignup').contents().hide();
 
+	$('.loginExist a, .loginFromReg').click(function() { //Login from header
+		$('.loginSignup').contents().hide();
+		$('.loginUser').show();
+		$('.loginSignup').modal();
 		return false;
 	});
 
-	$('.sign').click(function () {
-		$('.signer').modal();
+	/*$('.registerNew').click(function() { //Register from header
 
+		$('.loginSignup').contents().hide();
+		$('.registerUser').show();
+		$('.loginSignup').modal();
+		return false;
+
+	});
+
+	$('.loginUser a').click(function() { //Retrieve register from login page
+
+		$('.loginSignup').contents().hide();
+		$('.registerUser').show();
+		return false;
+	});*/
+
+	$('.loginUser a:last-child').click(function() { //Retrieve pass from login page
+
+		$('.loginSignup').contents().hide();
+		$('.findPassword').show();
 		return false;
 	});
+
+
+	/*$('.findPassword a').click(function () { //Login from retrieve pass
+		$('.loginSignup').contents().hide();
+		$('.registerUser').show();
+		return false;
+	});*/
+
+	$('.findPassword a:last-child, .registerUser a').click(function () { //Login from retrieve pass
+		$('.loginSignup').contents().hide();
+		$('.loginUser').show();
+		return false;
+	});
+
 
 
 	//
-	$("form#sign_in_user").bind("ajax:success", function(e, data, status, xhr) {
-	  if (data.success) {
-	    $('.logger').modal().hide();
-	    $('.header ul').hide();
-	    //$('#sign_in_button').hide();
-	    //return $('#submit_comment').slideToggle(1000, "easeOutBack");
-
-	    //window.location.href = data.redirect;
-
-	  } else {
-	    return alert('failure!');
-	  }
+	$('form#sign_in_user').bind("ajax:beforeSend", function(evt, xhr, settings){
+		$('.ajaxLoad').show();
+    }).bind('ajax:success', function(e, data, status, xhr) {
+	    //console.log(data);
+	    if(data.success) {
+	      window.location.reload();
+	    } else {
+	    	$('.ajaxLoad').hide();
+	      	$('#failedLogin').html(data.errors);
+	    }
 	});
-
 
 
 });

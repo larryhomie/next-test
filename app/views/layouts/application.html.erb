@@ -12,17 +12,25 @@
 		<div class="main clearfix">
 			<h3>NextSpeel</h3>
 
+			<form action="<%= tvs_path %>" method="get" >
+			  <%= text_field_tag :search, params[:search] %>
+			  <%= submit_tag "Search", :name => nil%>
+			</form> 
+
+
 			<ul>
 				<% if user_signed_in? %>
 
 					<li>Welcome <%= current_user.username %></li>
 
+					<li><%= link_to "Account", edit_user_registration_path %></li>
+
 					<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 
 				<% else %>
 
-					<li class="sign"><%= link_to "Register", new_user_registration_path %></li>
-					<li class="logd"><%= link_to "Login", new_user_session_path %></li>
+					<li class="registerNew"><%= link_to "Register", new_user_registration_path %></li>
+					<li class="loginExist"><%= link_to "Login", new_user_session_path %></li>
 					
 				<% end %>
 
@@ -41,13 +49,20 @@
 	<%= yield %>
 
 
-	<div class="logger">
-		<%= render "/devise/sessions/new" %>
-	</div>
+	<div class="modalContainer loginSignup">
 
+		<div class="loginUser clearfix">
+			<%= render "/devise/sessions/new" %>
+		</div>
 
-	<div class="signer">
-		<%= render "/devise/registrations/new" %>
+		<!--<div class="registerUser clearfix">
+			<%= render "/devise/registrations/new" %>
+		</div>-->
+
+		<div class="findPassword">
+			<%= render "/devise/passwords/new" %>
+		</div>
+
 	</div>
 
 </div>

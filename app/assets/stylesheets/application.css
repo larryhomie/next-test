@@ -48,8 +48,12 @@ a {
 	font: 130% "Century Gothic";
 }
 
-.header h3 {
+.header h3, .header form {
 	float: left;
+}
+
+.header form {
+	margin-left: 150px;
 }
 
 .header ul {
@@ -91,10 +95,16 @@ th {
 	text-transform: uppercase;
 }
 
-.logger, .signer {
+.modalContainer {
 	border: 1px solid #000;
 	padding: 50px;
 	width: 400px;
 	display: none;
 	background: #fff;
+}
+
+.ajaxLoad {
+	display: none;
+	padding-left: 20px;
+	background: url(/assets/ajax-loader.gif) no-repeat left center;
 }

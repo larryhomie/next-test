@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  #validates :username, :presence => true
+
   # Virtual attribute for authenticating by either username or email
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login

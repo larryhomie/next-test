@@ -1,0 +1,29 @@
+
+
+  <h2>Listing Episodes</h2>
+
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Season</th>
+    
+    </tr>
+
+  <% @episodes.each do |episode| %>
+    <tr>
+      <td><%= episode.title %></td>
+
+      <td>
+        <% if @episodes = :first %>
+          <%= episode.title %>
+        <% else %>
+          <%= episode.season %>
+        <% end %>
+      </td>
+     
+    </tr>
+  <% end %>
+  </table>
+
+ 
+

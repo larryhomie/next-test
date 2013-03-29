@@ -1,26 +1,48 @@
 
+  <% if params[:search] %>
+    <h2>Search Results for "<%= "#{params[:search]}" %>"</h2>
+  <% else %>
+    <h2>Listing tvs</h2>
+  <% end %>
 
-  <h2>Listing tvs</h2>
+  
 
   <table>
     <tr>
       <th>Title</th>
       <th>Story</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Genres</th>
+    
     </tr>
 
   <% @tvs.each do |tv| %>
-    <tr>
+
+  <% if params[:search] %>
+       <tr>
+        <td><%= tv.title %></td>
+        <td><%= tv.story %></td>
+        <td>Search Page</td>
+      </tr>
+  <% else %>
+     <tr>
       <td><%= tv.title %></td>
       <td><%= tv.story %></td>
-      <td><%= link_to 'Show', tv %></td>
-      <td><%= link_to 'Edit', edit_tv_path(tv) %></td>
-      <td><%= link_to 'Destroy', tv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= raw tv.genres.map(&:name).map { |t| link_to t, genre_path(t) }.join(', ') %></td>
     </tr>
   <% end %>
+
+  <% end %>
+  
   </table>
+
+  <br/>
+
+  <div>
+    <h3>All Genres</h3>
+    <% genre_cloud Tv.genre_counts, %w[s m l] do |genre, css_class| %>
+      <%= link_to genre.name, genre_path(genre.name), class: css_class %>
+    <% end %>
+  </div>
 
   <br />
 

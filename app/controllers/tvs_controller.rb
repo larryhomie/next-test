@@ -1,9 +1,25 @@
 class TvsController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:show, :index]
+
   # GET /tvs
   # GET /tvs.json
   def index
-    @tvs = Tv.all
+    if params[:genre]
 
+      @tvs = Tv.tagged_with(params[:genre])
+
+    elsif params[:search]
+
+      @tvs = Tv.search(params[:search])
+
+    else
+
+      @tvs = Tv.all
+
+    end
+    #@tvs = Tv.search(params[:search]).paginate(:page => params[:page]) #paginate search
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tvs }

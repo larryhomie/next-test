@@ -11,5 +11,9 @@
 </p>
 
 
-<%= link_to 'Edit', edit_tv_path(@tv) %> |
-<%= link_to 'Back', tvs_path %>
+<br />
+
+  <h3>Episodes</h3>
+
+  <%= render @tv.episodes %>
+
